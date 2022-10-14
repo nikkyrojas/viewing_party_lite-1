@@ -2,6 +2,10 @@
 
 Lets watch movies! The Viewing Party Lite application enables its users to explore movie options, create a viewing party events for themselves, and inviting other users of the application. This application utilizes the consumption of a public movie API to make a working application. For this application to work you will need to register for a [movie_api_key](https://developers.themoviedb.org/3/getting-started/introduction) and follow the steps [here](#Register).
 
+## Live Enviroment
+
+https://viewing-party-do-nr.herokuapp.com/
+
 ## Ruby/Rails version
 
 **ruby '2.7.2'**
