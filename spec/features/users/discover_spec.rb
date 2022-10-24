@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'User | Discover', type: :feature do
   describe 'When I visit /users/:id/discover;', :vcr do
     before(:each) do
-      @user1 = User.create!(name: 'Micheal Jordan', email: 'user235@gmail.com')
+      @user1 = User.create!(name: 'Micheal Jordan', email: 'user235@gmail.com', password: 'password123')
       visit user_discover_index_path(@user1)
     end
     it 'I see a button to discover top rated movies' do

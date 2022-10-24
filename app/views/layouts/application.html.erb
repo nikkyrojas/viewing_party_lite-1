@@ -18,8 +18,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav" id="user_creation">
+        <% if current_user %>
           <%= link_to "Home", root_path, class: "text-white mx-2 btn btn-success" %>
+          <%= link_to "Logout Here", '/logout', method: :delete, class: "mx-2 btn btn-success" %>
+        <% else %>
           <%= button_to "Register Here", "/register", method: :get, class: "mx-2 btn btn-success" %>
+          <%= button_to "Login Here", new_login_path, method: :get, class: "mx-2 btn btn-success" %>
+        <% end %>
         </div>
       </div>
     </div>
