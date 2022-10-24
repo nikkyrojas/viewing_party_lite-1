@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       flash[:error] = "Sorry, your credentials are bad."
       render :new
     end
+    # binding.pry
   end
 
   def destroy

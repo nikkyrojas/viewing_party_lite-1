@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates_presence_of :name,
                         :email
   validates_uniqueness_of :email
+  enum role: %w[default manager admin]
 
   def self.other_users(user)
     where('email != ?', user.email)

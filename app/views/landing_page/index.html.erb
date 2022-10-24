@@ -1,13 +1,21 @@
-<section id="current_users" class="d-flex justify-content-center align-items-center flex-column">
-  <p class="fw-bold fs-4 text-info">Current Users:</p>
-  <ol class="list-group list-group-numbered">
-    <% @users.each do |u| %>
-    <li class="list-group-item-dark list-group-item d-flex justify-content-between align-items-start">
-      <div class="ms-2 me-auto" id="user-<%= u.id %>">
-        <div class="fw-bold text-capitalize"><%= u.name %></div>
-        <%= link_to "#{u.email}'s dashboard", user_path(u.id) %>
-      </div>
-    </li>
-    <% end %>
-  </ol>
-</section>
+<% if current_user %>
+  <h2> <%= button_to "View Your Dashboard", user_path(current_user.id), method: :get, class: 'btn btn-success mx-1' %> </h2>
+
+<% elsif current_admin %>
+  <section id="current_users" class="d-flex justify-content-center align-items-center flex-column">
+    <p class="fw-bold fs-4 text-info">Current Users:</p>
+    <ol class="list-group list-group-numbered">
+      <% @users.each do |u| %>
+      <li class="list-group-item-dark list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto" id="user-<%= u.id %>">
+          <div class="fw-bold text-capitalize"><%= u.name %></div>
+          <%= link_to "#{u.email}'s dashboard", user_path(u.id) %>
+        </div>
+      </li>
+      <% end %>
+    </ol>
+  </section>
+
+<% else %>
+    <h2>  <div class="fw-bold"> <span class="text-light"> Login or Register Above </div> </h2>
+  <% end %>
