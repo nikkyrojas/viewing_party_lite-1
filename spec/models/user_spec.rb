@@ -14,6 +14,16 @@ RSpec.describe User, type: :model do
     it { should have_secure_password }
     it { should validate_uniqueness_of :email }
   end
+
+  describe 'Password' do
+    it 'ensures password is not stored as plain-text' do
+      user = User.create(name: 'Dominic', email: 'dominic@test.com', password: 'password123', password_confirmation: 'password123')
+
+      expect(user).to_not have_attribute(:password)
+      expect(user.password_digest).to_not eq('password123')
+    end
+  end
+
   describe 'Class Methods' do
     describe '.other_users' do
       it 'returns all other users given the argument of user obj' do
