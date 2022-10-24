@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Movie | Index' do
   describe 'As a user when I visit the Movies Results Page', :vcr do
     before(:each) do
-      @user1 = User.create!(name: 'Micheal Jordan', email: 'user76@gmail.com')
+      @user1 = User.create!(name: 'jojo binks', email: 'jojo_binks@gmail.com', password: 'password_1', password_confirmation: 'password_1')
       visit user_discover_index_path(@user1)
     end
     context 'Happy Path' do

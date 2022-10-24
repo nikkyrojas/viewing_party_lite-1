@@ -5,10 +5,10 @@ require 'rails_helper'
 RSpec.describe 'User | Show', type: :feature do
   describe 'When I visit user/:id where :id is a valid id;', :vcr do
     before(:each) do
-      @user1 = User.create!(name: 'jojo binks', email: 'jojo_binks@gmail.com')
-      @user2 = User.create!(name: 'bobby', email: 'bobby@yahoo.com')
-      @user3 = User.create!(name: 'marissa nicole', email: 'marissa.nicole99@gmail.com')
-      @user4 = User.create!(name: 'dominic od', email: 'domo99@gmail.com')
+      @user1 = User.create!(name: 'jojo binks', email: 'jojo_binks@gmail.com', password: 'password_1', password_confirmation: 'password_1')
+      @user2 = User.create!(name: 'bobby', email: 'bobby@yahoo.com', password: 'password_2', password_confirmation: 'password_2')
+      @user3 = User.create!(name: 'marissa nicole', email: 'marissa.nicole99@gmail.com', password: 'password_3', password_confirmation: 'password_3')
+      @user4 = User.create!(name: 'dominic od', email: 'domo99@gmail.com', password: 'password_4', password_confirmation: 'password_4')
       @vp1 = ViewingParty.create!(duration: 100, date: '2022-10-11 17:19:58', time: '17:08', movie_id: 36_600)
       @vp2 = ViewingParty.create!(duration: 180, date: '2022-10-12 16:18:58', time: '19:08', movie_id: 34_601)
       @user_view1 = UserViewingParty.create!(user_id: @user1.id, viewing_party_id: @vp1.id, role: 1)

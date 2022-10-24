@@ -5,9 +5,9 @@ require 'rails_helper'
 RSpec.describe 'Viewing Party | New', type: :feature do
   describe 'When I visit the new viewing party page;', :vcr do
     before(:each) do
-      @user1 = User.create!(name: 'jojo binks', email: 'jojo_binks@gmail.com')
-      @user2 = User.create!(name: 'bobby', email: 'bobby@yahoo.com')
-      @user3 = User.create!(name: 'marissa nicole', email: 'marissa.nicole99@gmail.com')
+      @user1 = User.create!(name: 'jojo binks', email: 'jojo_binks@gmail.com', password: 'password_1', password_confirmation: 'password_1')
+      @user2 = User.create!(name: 'bobby', email: 'bobby@yahoo.com', password: 'password_2', password_confirmation: 'password_2')
+      @user3 = User.create!(name: 'marissa nicole', email: 'marissa.nicole99@gmail.com', password: 'password_3', password_confirmation: 'password_3')
       @movie = MovieFacade.create_individual_movie(361_743)
       visit new_user_movie_viewing_party_path(@user1, @movie.id)
     end
