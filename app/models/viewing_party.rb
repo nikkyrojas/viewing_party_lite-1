@@ -19,3 +19,4 @@ class ViewingParty < ApplicationRecord
     user_viewing_parties.joins(:user).where(role: 1).pluck('users.name')[0]
   end
 end
+œ
