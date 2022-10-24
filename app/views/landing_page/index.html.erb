@@ -1,7 +1,7 @@
-<% if current_user %>
+<% if current_user && !current_admin? %>
   <h2> <%= button_to "View Your Dashboard", user_path(current_user.id), method: :get, class: 'btn btn-success mx-1' %> </h2>
 
-<% elsif current_admin %>
+<% elsif current_admin? %>
   <section id="current_users" class="d-flex justify-content-center align-items-center flex-column">
     <p class="fw-bold fs-4 text-info">Current Users:</p>
     <ol class="list-group list-group-numbered">
