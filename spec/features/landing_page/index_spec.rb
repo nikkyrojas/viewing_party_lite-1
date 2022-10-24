@@ -5,9 +5,9 @@ require 'rails_helper'
 RSpec.describe 'Landing Page | Index', type: :feature do
   describe 'As a user when I visit the Landing Page,' do
     before(:each) do
-      @user1 = User.create!(name: 'jojo binks', email: 'jojo_binks@gmail.com')
-      @user2 = User.create!(name: 'bobby', email: 'bobby@yahoo.com')
-      @user3 = User.create!(name: 'marissa nicole', email: 'marissa.nicole99@gmail.com')
+      @user1 = User.create!(name: 'jojo binks', email: 'jojo_binks@gmail.com', password: 'password_1', password_confirmation: 'password_1')
+      @user2 = User.create!(name: 'bobby', email: 'bobby@yahoo.com', password: 'password_2', password_confirmation: 'password_2')
+      @user3 = User.create!(name: 'marissa nicole', email: 'marissa.nicole99@gmail.com', password: 'password_3', password_confirmation: 'password_3')
       visit root_path
     end
     it 'I see the title of the Applications' do

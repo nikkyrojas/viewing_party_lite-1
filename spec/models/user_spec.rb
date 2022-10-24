@@ -17,9 +17,9 @@ RSpec.describe User, type: :model do
   describe 'Class Methods' do
     describe '.other_users' do
       it 'returns all other users given the argument of user obj' do
-        user1 = User.create!(name: 'jojo binks', email: 'jojo_binks@gmail.com')
-        user2 = User.create!(name: 'bobby', email: 'bobby@yahoo.com')
-        user3 = User.create!(name: 'marissa nicole', email: 'marissa.nicole99@gmail.com')
+        user1 = User.create!(name: 'jojo binks', email: 'jojo_binks@gmail.com', password: 'password_1', password_confirmation: 'password_1')
+        user2 = User.create!(name: 'bobby', email: 'bobby@yahoo.com', password: 'password_2', password_confirmation: 'password_2')
+        user3 = User.create!(name: 'marissa nicole', email: 'marissa.nicole99@gmail.com', password: 'password_3', password_confirmation: 'password_3')
         expect(User.other_users(user1)).to eq [user2, user3]
       end
     end
