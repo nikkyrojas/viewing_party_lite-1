@@ -27,7 +27,7 @@ RSpec.describe MovieFacade do
 
       expect(movie).to be_a Movie
       expect(movie.title).to eq('The Lord of the Rings')
-      expect(movie.vote_average).to eq(6.57)
+      expect(movie.vote_average).to eq(6.571)
       expect(movie.overview).to eq("The Fellowship of the Ring embark on a journey to destroy the One Ring and end Sauron's reign over Middle-earth.")
       expect(movie.runtime).to eq(132)
       expect(movie.genres).to eq(%w[Adventure Animation Fantasy])
