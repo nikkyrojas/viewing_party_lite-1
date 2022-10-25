@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :require_user
   def new
     @user = User.new
   end
 
   def show
-    @user = User.find(params[:id])
-    @viewing_parties = @user.viewing_parties
+    @viewing_parties = @current_user.viewing_parties
     movies_ids = @viewing_parties.map(&:movie_id)
     @movies = MovieFacade.create_movies(movies_ids)
   end
@@ -21,7 +21,6 @@ class UsersController < ApplicationController
     else
       redirect_to '/register'
       flash[:alert] = "Error: #{error_message(@user.errors)}"
-
     end
   end
 
