@@ -9,7 +9,9 @@ RSpec.describe 'Viewing Party | New', type: :feature do
       @user2 = User.create!(name: 'bobby', email: 'bobby@yahoo.com', password: 'password_2', password_confirmation: 'password_2')
       @user3 = User.create!(name: 'marissa nicole', email: 'marissa.nicole99@gmail.com', password: 'password_3', password_confirmation: 'password_3')
       @movie = MovieFacade.create_individual_movie(361_743)
-      visit new_user_movie_viewing_party_path(@user1, @movie.id)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
+
+      visit new_user_movie_viewing_party_path(@movie.id)
     end
     it 'I should see the name of the movie title rendered' do
       within('#movie_title') { expect(page).to have_content('Top Gun') }
@@ -49,7 +51,7 @@ RSpec.describe 'Viewing Party | New', type: :feature do
           fill_in 'form_info[time]', with: '19:30'
           check "users[#{@user2.id}]"
           click_on 'Create Viewing Party'
-          expect(page.current_path).to eq user_path(@user1)
+          expect(page.current_path).to eq user_path
         end
       end
       it 'I see the newly made viewing party in my dashboard' do
@@ -59,7 +61,7 @@ RSpec.describe 'Viewing Party | New', type: :feature do
           fill_in 'form_info[time]', with: '19:30'
           check "users[#{@user2.id}]"
           click_on 'Create Viewing Party'
-          expect(page.current_path).to eq user_path(@user1)
+          expect(page.current_path).to eq user_path
         end
         within('#flash') do
           expect(page).to have_content('View Party created successfully')
@@ -81,8 +83,10 @@ RSpec.describe 'Viewing Party | New', type: :feature do
           fill_in 'form_info[time]', with: '19:30'
           check "users[#{@user2.id}]"
           click_on 'Create Viewing Party'
-          expect(page.current_path).to eq user_path(@user1)
+          expect(page.current_path).to eq user_path
         end
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user2)
+
         visit user_path(@user2)
         within('#viewing_parties') do
           expect(page).to have_content('Top Gun: Maverick')
@@ -101,7 +105,7 @@ RSpec.describe 'Viewing Party | New', type: :feature do
           fill_in 'form_info[date]', with: '1999-07-20'
           check "users[#{@user2.id}]"
           click_on 'Create Viewing Party'
-          expect(page.current_path).to eq new_user_movie_viewing_party_path(@user1, @movie.id)
+          expect(page.current_path).to eq new_user_movie_viewing_party_path(@movie.id)
         end
         within('.container') do
           expect(page).to have_content('Error: Incorrect information entered')
@@ -114,7 +118,7 @@ RSpec.describe 'Viewing Party | New', type: :feature do
           fill_in 'form_info[time]', with: '19:30'
           check "users[#{@user2.id}]"
           click_on 'Create Viewing Party'
-          expect(page.current_path).to eq new_user_movie_viewing_party_path(@user1, @movie.id)
+          expect(page.current_path).to eq new_user_movie_viewing_party_path(@movie.id)
         end
         within('.container') do
           expect(page).to have_content('Error: Incorrect information entered')

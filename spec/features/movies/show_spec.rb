@@ -6,7 +6,9 @@ RSpec.describe 'Movie Detail Page' do
   describe 'As a user when I visit the Movies Detail (show) Page', :vcr do
     before(:each) do
       @user1 = User.create!(name: 'Micheal Jordan', email: 'user7@gmail.com', password: 'password_1', password_confirmation: 'password_1')
-      visit user_movie_path(@user1, 19404)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
+
+      visit user_movie_path(19_404)
     end
     it 'has movie details' do
       expect(page).to have_content('Dilwale Dulhania Le Jayenge')
@@ -22,7 +24,7 @@ RSpec.describe 'Movie Detail Page' do
     it 'has button to create viewing party/redirects to new form' do
       expect(page).to have_button('Create Viewing Party')
       click_on 'Create Viewing Party'
-      expect(current_path).to eq(new_user_movie_viewing_party_path(@user1, 19404))
+      expect(current_path).to eq(new_user_movie_viewing_party_path(19_404))
     end
     it 'has button to return to discover page' do
       expect(page).to have_button('Discover Movies')

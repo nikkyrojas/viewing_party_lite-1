@@ -22,7 +22,7 @@ RSpec.describe 'User | Login' do
       fill_in :password, with: 'password_1'
       click_on 'Log In'
 
-      expect(page.current_path).to eq user_path(User.last)
+      expect(page.current_path).to eq user_path
       expect(page).to have_content("Welcome, #{User.last.name}")
     end
   end
@@ -37,6 +37,13 @@ RSpec.describe 'User | Login' do
 
       expect(page.current_path).to eq login_path
       expect(page).to have_content('Error: Incorrect Credentials')
+    end
+
+    it 'If I am not logged in I cannot go to other pages' do
+      visit user_path
+
+      expect(page).to have_content('You must be a registered user to access this page')
+      expect(page.current_path).to eq root_path
     end
   end
 end
