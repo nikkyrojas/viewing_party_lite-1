@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = user.id
       flash[:success] = "Welcome, #{@user.name}!"
-      redirect_to "/users/#{@user.id}"
+      redirect_to '/dashboard'
     else
       redirect_to '/register'
       flash[:alert] = "Error: #{error_message(@user.errors)}"
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     if user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:success] = "Welcome, #{user.name}"
-      redirect_to user_path(user.id)
+      redirect_to user_path
     else
       flash[:error] = 'Error: Incorrect Credentials'
       render :login_form

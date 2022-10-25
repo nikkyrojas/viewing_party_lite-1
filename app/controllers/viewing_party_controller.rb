@@ -5,16 +5,16 @@ class ViewingPartyController < ApplicationController
   def new
     @viewing_party = ViewingParty.new
     @movie = current_movie
-    @users = User.other_users(@current_user)
+    @users = User.other_users(current_user)
   end
 
   def create
     party = ViewingParty.new(view_params)
     if party.save && view_params[:duration].to_i >= current_movie.runtime
       creation_factory(party)
-      redirect_to user_path(@current_user), notice: 'View Party created successfully'
+      redirect_to user_path, notice: 'View Party created successfully'
     else
-      redirect_to new_user_movie_viewing_party_path(@current_user, params[:movie_id]),
+      redirect_to new_user_movie_viewing_party_path(params[:movie_id]),
                   notice: 'Error: Incorrect information entered'
     end
   end
@@ -25,7 +25,7 @@ class ViewingPartyController < ApplicationController
     user_view_params.each do |user_arr|
       UserViewingParty.create!(user_id: user_arr[0], viewing_party_id: party.id, role: 0) if user_arr[1].to_i == 1
     end
-    UserViewingParty.create!(user_id: @current_user.id, viewing_party_id: party.id, role: 1)
+    UserViewingParty.create!(user_id: current_user.id, viewing_party_id: party.id, role: 1)
   end
 
   def view_params
