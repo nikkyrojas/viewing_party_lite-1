@@ -5,7 +5,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]) if params[:id]
+    @user = User.find(params[:format]) if params[:format]
+    # binding.pry
     @viewing_parties = @user.viewing_parties
     movies_ids = @viewing_parties.map(&:movie_id)
     @movies = MovieFacade.create_movies(movies_ids)
@@ -26,10 +28,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  # def user_params
-  #   params.require(:user).permit(:name, :email)
-  # end
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end

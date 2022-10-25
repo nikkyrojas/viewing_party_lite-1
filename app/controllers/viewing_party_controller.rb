@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-
 class ViewingPartyController < ApplicationController
+  before_action :require_user
   def new
     @user = current_user
     @viewing_party = ViewingParty.new
