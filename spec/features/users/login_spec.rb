@@ -22,7 +22,7 @@ RSpec.describe 'User | Login' do
       fill_in :password, with: 'password_1'
       click_on 'Log In'
 
-      expect(page.current_path).to eq user_path(User.last)
+      expect(page.current_path).to eq user_path
       expect(page).to have_content("Welcome, #{User.last.name}")
     end
   end

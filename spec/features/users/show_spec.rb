@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'User | Show', type: :feature do
-  describe 'When I visit user/:id where :id is a valid id;', :vcr do
+  describe 'When I visit /dashboard', :vcr do
     before(:each) do
       @user1 = User.create!(name: 'jojo binks', email: 'jojo_binks@gmail.com', password: 'password_1', password_confirmation: 'password_1')
       @user2 = User.create!(name: 'bobby', email: 'bobby@yahoo.com', password: 'password_2', password_confirmation: 'password_2')
@@ -15,7 +15,9 @@ RSpec.describe 'User | Show', type: :feature do
       @user_view2 = UserViewingParty.create!(user_id: @user1.id, viewing_party_id: @vp2.id, role: 0)
       @user_view3 = UserViewingParty.create!(user_id: @user2.id, viewing_party_id: @vp2.id, role: 0)
       @user_view3 = UserViewingParty.create!(user_id: @user3.id, viewing_party_id: @vp2.id, role: 1)
-      visit user_path(@user1.id)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
+
+      visit user_path
     end
     it 'I see the users name at the top of the page' do
       within('#user_name') do
@@ -28,7 +30,7 @@ RSpec.describe 'User | Show', type: :feature do
       within('#discover') do
         expect(page).to have_button('Discover Movies')
         click_on 'Discover Movies'
-        expect(page.current_path).to eq user_discover_index_path(@user1.id)
+        expect(page.current_path).to eq user_discover_index_path
       end
     end
     it 'I see a section that lists all of my viewing parties' do
