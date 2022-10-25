@@ -5,7 +5,7 @@ class ViewingPartyController < ApplicationController
   def new
     @viewing_party = ViewingParty.new
     @movie = current_movie
-    @users = User.other_users(@user)
+    @users = User.other_users(@current_user)
   end
 
   def create
@@ -25,7 +25,7 @@ class ViewingPartyController < ApplicationController
     user_view_params.each do |user_arr|
       UserViewingParty.create!(user_id: user_arr[0], viewing_party_id: party.id, role: 0) if user_arr[1].to_i == 1
     end
-    UserViewingParty.create!(user_id: params[:user_id], viewing_party_id: party.id, role: 1)
+    UserViewingParty.create!(user_id: @current_user.id, viewing_party_id: party.id, role: 1)
   end
 
   def view_params

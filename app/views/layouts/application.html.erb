@@ -19,8 +19,12 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav" id="user_creation">
           <%= link_to "Home", root_path, class: "text-white mx-2 btn btn-success" %>
-          <%= button_to "Register Here", "/register", method: :get, class: "mx-2 btn btn-success" %>
-          <%= button_to "Login", "/login", method: :get, class: "mx-2 btn btn-success" %>
+          <% if !@current_user %>
+            <%= button_to "Register Here", "/register", method: :get, class: "mx-2 btn btn-success" %>
+            <%= button_to "Login", "/login", method: :get, class: "mx-2 btn btn-success" %>
+          <% else %>
+            <%= button_to "Dashboard", "/dashboard", method: :get, class: "mx-2 btn btn-success" %>
+          <% end %>
         </div>
       </div>
     </div>

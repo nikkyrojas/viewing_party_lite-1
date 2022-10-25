@@ -20,30 +20,25 @@ RSpec.describe 'Landing Page | Index', type: :feature do
         expect(page).to have_button('Register Here')
       end
     end
-    it 'I see a list of existing users which links to each users dashboard' do
-      within('#current_users') do
-        within("#user-#{@user1.id}") do
-          expect(page).to have_link("#{@user1.email}'s dashboard", href: user_path(@user1.id))
-          expect(page).to_not have_link("#{@user2.email}'s dashboard", href: user_path(@user2.id))
-          expect(page).to_not have_link("#{@user3.email}'s dashboard", href: user_path(@user3.id))
-        end
-        within("#user-#{@user2.id}") do
-          expect(page).to have_link("#{@user2.email}'s dashboard", href: user_path(@user2.id))
-          expect(page).to_not have_link("#{@user1.email}'s dashboard", href: user_path(@user1.id))
-          expect(page).to_not have_link("#{@user3.email}'s dashboard", href: user_path(@user3.id))
-        end
-        within("#user-#{@user3.id}") do
-          expect(page).to have_link("#{@user3.email}'s dashboard", href: user_path(@user3.id))
-          expect(page).to_not have_link("#{@user1.email}'s dashboard", href: user_path(@user1.id))
-          expect(page).to_not have_link("#{@user2.email}'s dashboard", href: user_path(@user2.id))
-        end
-      end
-    end
     it 'I see a link back to the home page' do
       within('#home_page_link') do
         expect(page).to have_link('Home')
         click_on 'Home'
         expect(page.current_path).to eq root_path
+      end
+    end
+    it 'I see a link to login' do
+      within('#home_page_link') do
+        expect(page).to have_button('Login')
+        click_on 'Login'
+        expect(page.current_path).to eq login_path
+      end
+    end
+    it 'I see a link to register' do
+      within('#home_page_link') do
+        expect(page).to have_button('Register Here')
+        click_on 'Register Here'
+        expect(page.current_path).to eq register_path
       end
     end
   end
