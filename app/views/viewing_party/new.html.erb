@@ -1,6 +1,6 @@
 <h2 id="movie_title" class="text-info"><%= @movie.title %></h2>
 <section id="view_party_form">
-  <%= form_with url: user_movie_viewing_party_index_path(@user, @movie.id), method: :post, local: :true, class: "d-flex flex-column g-3 container-sm" do |form| %>
+  <%= form_with url: user_movie_viewing_party_index_path(@current_user, @movie.id), method: :post, local: :true, class: "d-flex flex-column g-3 container-sm" do |form| %>
     <%= form.label "Viewing Party Duration", class: 'text-info fs-4 col-form-label-sm' %>
     <div class="col-sm-3">
       <%= form.text_field "form_info[duration]", placeholder: "#{@movie.runtime}", class: "form-control form-control-sm" %>

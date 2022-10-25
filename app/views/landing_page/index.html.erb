@@ -1,5 +1,5 @@
 <section id="current_users" class="d-flex justify-content-center align-items-center flex-column">
-  <% unless session[:user_id] %>
+  <% unless @current_user %>
     <h1 class="text-light">Please login or register</h1>
   <% end %>
 </section>

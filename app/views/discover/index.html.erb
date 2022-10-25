@@ -1,4 +1,4 @@
-<%= form_with url: user_movies_path(@user), method: :get, local: true, class: "d-flex column g-3 container-sm", role: 'search' do |f| %>
+<%= form_with url: user_movies_path(@current_user), method: :get, local: true, class: "d-flex column g-3 container-sm", role: 'search' do |f| %>
   <div class="row mb-3 text-info">
     <%= f.label "Movie Title", class: 'fs-5 col-form-label col-form-label-sm'  %>
     <div class="column-sm-8 mt-1">
