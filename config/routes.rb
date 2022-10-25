@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/login', to: 'users#login_form'
   post '/login', to: 'users#login_user'
 
-  resources :users, only: %i[new create show] do
+  resource :user, only: %i[new create show] do
     resources :discover, only: [:index]
     resources :movies, only: %i[index show] do
       resources :viewing_party, only: %i[new create]
