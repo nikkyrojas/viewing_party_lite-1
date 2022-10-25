@@ -27,6 +27,11 @@ class UsersController < ApplicationController
 
   def login_form; end
 
+  def logout_user
+    session.delete(:user_id)
+    redirect_to root_path
+  end
+
   def login_user
     user = User.find_by(email: params[:email])
     if user.authenticate(params[:password])

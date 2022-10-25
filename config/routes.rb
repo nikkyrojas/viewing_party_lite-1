@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get '/login', to: 'users#login_form'
   post '/login', to: 'users#login_user'
 
+  post '/logout', to: 'users#logout_user'
+
   resource :user, path: 'dashboard', only: %i[new create show] do
     resources :discover, only: [:index]
     resources :movies, only: %i[index show] do

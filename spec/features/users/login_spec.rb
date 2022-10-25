@@ -38,5 +38,12 @@ RSpec.describe 'User | Login' do
       expect(page.current_path).to eq login_path
       expect(page).to have_content('Error: Incorrect Credentials')
     end
+
+    it 'If I am not logged in I cannot go to other pages' do
+      visit user_path
+
+      expect(page).to have_content('You must be a registered user to access this page')
+      expect(page.current_path).to eq root_path
+    end
   end
 end
