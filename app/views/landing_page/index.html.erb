@@ -14,7 +14,7 @@
   </section>
 
 <% elsif current_user %>
-  <h2> <%= button_to "View Your Dashboard", "/dashboard", method: :get, params: {id: current_user.id}, class: 'btn btn-success mx-1' %> </h2>
+  <h2> <%= button_to "View Your Dashboard", "/dashboard", method: :get, class: 'btn btn-success mx-1' %> </h2>
 
 <% else %>
     <h2>  <div class="fw-bold"> <span class="text-light"> Login or Register Above </div> </h2>

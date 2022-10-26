@@ -15,6 +15,14 @@ RSpec.describe 'User | Show', type: :feature do
       @user_view2 = UserViewingParty.create!(user_id: @user1.id, viewing_party_id: @vp2.id, role: 0)
       @user_view3 = UserViewingParty.create!(user_id: @user2.id, viewing_party_id: @vp2.id, role: 0)
       @user_view3 = UserViewingParty.create!(user_id: @user3.id, viewing_party_id: @vp2.id, role: 1)
+      visit root_path
+      click_on "Login Here"
+      email = 'jojo_binks@gmail.com'
+      password = 'password123'
+      fill_in :email, with: email
+      fill_in :password, with: password
+      click_on "Login"
+      visit dashboard_path(@user1.id)
       visit user_path(@user1.id)
     end
     it 'I see the users name at the top of the page' do
