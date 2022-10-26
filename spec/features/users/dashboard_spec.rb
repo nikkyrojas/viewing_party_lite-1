@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-
-RSpec.describe 'User | Show', type: :feature do
-  describe 'When I visit user/:id where :id is a valid id;', :vcr do
+RSpec.describe 'User | Dashboard', type: :feature do
+  describe 'When I visit /dashboard', :vcr do
     before(:each) do
       @user1 = User.create!(name: 'jojo binks', email: 'jojo_binks@gmail.com', password: 'password123')
       @user2 = User.create!(name: 'bobby', email: 'bobby@yahoo.com', password: 'password123')
@@ -23,7 +22,6 @@ RSpec.describe 'User | Show', type: :feature do
       fill_in :password, with: password
       click_on "Login"
       visit dashboard_path(@user1.id)
-      visit user_path(@user1.id)
     end
     it 'I see the users name at the top of the page' do
       within('#user_name') do

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-
 class ViewingPartyController < ApplicationController
+  before_action :require_user
   def new
     @user = current_user
     @viewing_party = ViewingParty.new
@@ -12,7 +12,7 @@ class ViewingPartyController < ApplicationController
     party = ViewingParty.new(view_params)
     if party.save && view_params[:duration].to_i >= current_movie.runtime
       creation_factory(party)
-      redirect_to user_path(current_user), notice: 'View Party created successfully'
+      redirect_to dashboard_path, notice: 'View Party created successfully'
     else
       redirect_to new_user_movie_viewing_party_path(current_user, params[:movie_id]),
                   notice: 'Error: Incorrect information entered'
@@ -34,10 +34,6 @@ class ViewingPartyController < ApplicationController
 
   def user_view_params
     params.require(:users)
-  end
-
-  def current_user
-    User.find(params[:user_id])
   end
 
   def current_movie

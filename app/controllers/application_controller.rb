@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
     if !current_user
       redirect_to root_path
       flash[:alert] = 'You must be logged in'
+      
     end
   end
 

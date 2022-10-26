@@ -1,16 +1,17 @@
 # frozen_string_literal: true
 class UsersController < ApplicationController
+  before_action :require_user, only: [:show]
   def new
     @user = User.new
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     @viewing_parties = @user.viewing_parties
     movies_ids = @viewing_parties.map(&:movie_id)
     @movies = MovieFacade.create_movies(movies_ids)
   end
-
+ 
   def create
     @user = User.new(user_params)
     if @user.save
@@ -26,10 +27,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  # def user_params
-  #   params.require(:user).permit(:name, :email)
-  # end
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end

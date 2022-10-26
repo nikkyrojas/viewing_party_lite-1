@@ -9,6 +9,13 @@ RSpec.describe 'Viewing Party | New', type: :feature do
       @user2 = User.create!(name: 'bobby', email: 'bobby@yahoo.com', password: 'password566')
       @user3 = User.create!(name: 'marissa nicole', email: 'marissa.nicole99@gmail.com', password: 'password566')
       @movie = MovieFacade.create_individual_movie(361_743)
+      visit root_path
+      click_on "Login Here"
+      email = 'jojo_binks@gmail.com'
+      password = 'password566'
+      fill_in :email, with: email
+      fill_in :password, with: password
+      click_on "Login"
       visit new_user_movie_viewing_party_path(@user1, @movie.id)
     end
     it 'I should see the name of the movie title rendered' do
@@ -31,7 +38,7 @@ RSpec.describe 'Viewing Party | New', type: :feature do
         within('#view_party_form') do
           check_boxes = find_all('.checkbox')
           expect(check_boxes.count).to eq 2
-
+          
           expect(page).to_not have_content @user1.email.capitalize
           expect(page).to have_content @user2.email.capitalize
           expect(page).to have_content @user3.email.capitalize
@@ -49,7 +56,7 @@ RSpec.describe 'Viewing Party | New', type: :feature do
           fill_in 'form_info[time]', with: '19:30'
           check "users[#{@user2.id}]"
           click_on 'Create Viewing Party'
-          expect(page.current_path).to eq user_path(@user1)
+          expect(page.current_path).to eq dashboard_path
         end
       end
       it 'I see the newly made viewing party in my dashboard' do
@@ -59,7 +66,7 @@ RSpec.describe 'Viewing Party | New', type: :feature do
           fill_in 'form_info[time]', with: '19:30'
           check "users[#{@user2.id}]"
           click_on 'Create Viewing Party'
-          expect(page.current_path).to eq user_path(@user1)
+          expect(page.current_path).to eq dashboard_path
         end
         within('#flash') do
           expect(page).to have_content('View Party created successfully')
@@ -81,7 +88,7 @@ RSpec.describe 'Viewing Party | New', type: :feature do
           fill_in 'form_info[time]', with: '19:30'
           check "users[#{@user2.id}]"
           click_on 'Create Viewing Party'
-          expect(page.current_path).to eq user_path(@user1)
+          expect(page.current_path).to eq dashboard_path
         end
         visit user_path(@user2)
         within('#viewing_parties') do

@@ -1,7 +1,4 @@
-<% if current_user && !current_admin? %>
-  <h2> <%= button_to "View Your Dashboard", user_path(current_user.id), method: :get, class: 'btn btn-success mx-1' %> </h2>
-
-<% elsif current_admin? %>
+<% if current_admin? %>
   <section id="current_users" class="d-flex justify-content-center align-items-center flex-column">
     <p class="fw-bold fs-4 text-info">Current Users:</p>
     <ol class="list-group list-group-numbered">
@@ -15,6 +12,9 @@
       <% end %>
     </ol>
   </section>
+
+<% elsif current_user %>
+  <h2> <%= button_to "View Your Dashboard", "/dashboard", method: :get, class: 'btn btn-success mx-1' %> </h2>
 
 <% else %>
     <h2>  <div class="fw-bold"> <span class="text-light"> Login or Register Above </div> </h2>

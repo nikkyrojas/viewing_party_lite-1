@@ -6,6 +6,11 @@ RSpec.describe 'Movie Detail Page' do
   describe 'As a user when I visit the Movies Detail (show) Page', :vcr do
     before(:each) do
       @user1 = User.create!(name: 'Micheal Jordan', email: 'user7@gmail.com', password: 'password123')
+      visit root_path
+      click_on "Login Here"
+      fill_in :email, with: 'user7@gmail.com'
+      fill_in :password, with: 'password123'
+      click_on "Login"
       visit user_movie_path(@user1, 19404)
     end
     it 'has movie details' do
