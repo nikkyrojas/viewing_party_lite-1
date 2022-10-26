@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/movie/667257?api_key=DONT SHOW MY API KEY&language=en-US
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.6.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Wed, 26 Oct 2022 14:59:06 GMT
+      Server:
+      - openresty
+      Cache-Control:
+      - public, max-age=28800
+      X-Memc:
+      - HIT
+      X-Memc-Key:
+      - f133b3214daa79cdc34a03b8906e89223b56209f
+      X-Memc-Age:
+      - '4496'
+      X-Memc-Expires:
+      - '11492'
+      Etag:
+      - W/"f9ab4fe607793839c90e5ca7c9e30b35"
+      Vary:
+      - Accept-Encoding,Accept-Encoding,Accept-Encoding
+      - Origin
+      X-Cache:
+      - Hit from cloudfront
+      Via:
+      - 1.1 e5778a61da2e928608d7fdc9242d1f8e.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN52-P3
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      X-Amz-Cf-Id:
+      - vKeMZa9bVqtPE90M4CmYJmOQDjTxqoT6lWbpTQLKkcceE-6iWqkTsA==
+      Age:
+      - '6139'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJhZHVsdCI6ZmFsc2UsImJhY2tkcm9wX3BhdGgiOiIvYnhTQk9BRDhBdU1IWU1kVzNqc285bnBBa2d0LmpwZyIsImJlbG9uZ3NfdG9fY29sbGVjdGlvbiI6bnVsbCwiYnVkZ2V0IjowLCJnZW5yZXMiOlt7ImlkIjoxMDc1MSwibmFtZSI6IkZhbWlseSJ9LHsiaWQiOjE4LCJuYW1lIjoiRHJhbWEifV0sImhvbWVwYWdlIjoiIiwiaWQiOjY2NzI1NywiaW1kYl9pZCI6InR0MTAwMzIzNDIiLCJvcmlnaW5hbF9sYW5ndWFnZSI6ImVzIiwib3JpZ2luYWxfdGl0bGUiOiJDb3NhcyBpbXBvc2libGVzIiwib3ZlcnZpZXciOiJNYXRpbGRlIGlzIGEgd29tYW4gd2hvLCBhZnRlciB0aGUgZGVhdGggb2YgaGVyIGh1c2JhbmQgLSBhIG1hbiB3aG8gY29uc3RhbnRseSBhYnVzZWQgaGVyIC0gZmluZHMgaGVyIG5ldyBiZXN0IGZyaWVuZCBpbiBNaWd1ZWwsIGhlciB5b3VuZywgaW5zZWN1cmUsIGRpc29yaWVudGVkIGFuZCBldmVuIGRlYWxlciBuZWlnaGJvciIsInBvcHVsYXJpdHkiOjguNjkyLCJwb3N0ZXJfcGF0aCI6Ii90MkV3OE5aOENpMmtxbW9lY1pVTlFVRkRKblEuanBnIiwicHJvZHVjdGlvbl9jb21wYW5pZXMiOlt7ImlkIjoxMjQ4NywibG9nb19wYXRoIjpudWxsLCJuYW1lIjoiQWxlYnJpamUgUHJvZHVjY2lvbmVzIiwib3JpZ2luX2NvdW50cnkiOiJNWCJ9LHsiaWQiOjE3MDI0LCJsb2dvX3BhdGgiOm51bGwsIm5hbWUiOiJWaWRlb2NpbmUgUy5BLiBkZSBDLlYuIiwib3JpZ2luX2NvdW50cnkiOiJNWCJ9LHsiaWQiOjk2OTI5LCJsb2dvX3BhdGgiOm51bGwsIm5hbWUiOiJBZ2VuY2lhIFNIQSIsIm9yaWdpbl9jb3VudHJ5IjoiIn1dLCJwcm9kdWN0aW9uX2NvdW50cmllcyI6W3siaXNvXzMxNjZfMSI6Ik1YIiwibmFtZSI6Ik1leGljbyJ9XSwicmVsZWFzZV9kYXRlIjoiMjAyMS0wNi0xNyIsInJldmVudWUiOjAsInJ1bnRpbWUiOjg4LCJzcG9rZW5fbGFuZ3VhZ2VzIjpbeyJlbmdsaXNoX25hbWUiOiJTcGFuaXNoIiwiaXNvXzYzOV8xIjoiZXMiLCJuYW1lIjoiRXNwYcOxb2wifV0sInN0YXR1cyI6IlJlbGVhc2VkIiwidGFnbGluZSI6IlRoZXJlIGFyZSBlbmNvdW50ZXJzIHRoYXQgY2hhbmdlIHlvdXIgbGlmZSIsInRpdGxlIjoiSW1wb3NzaWJsZSBUaGluZ3MiLCJ2aWRlbyI6ZmFsc2UsInZvdGVfYXZlcmFnZSI6OC41MzcsInZvdGVfY291bnQiOjI3MX0=
+  recorded_at: Wed, 26 Oct 2022 16:41:25 GMT
+recorded_with: VCR 6.1.0

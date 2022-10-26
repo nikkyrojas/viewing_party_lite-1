@@ -90,13 +90,19 @@ RSpec.describe 'Viewing Party | New', type: :feature do
           click_on 'Create Viewing Party'
           expect(page.current_path).to eq dashboard_path
         end
-        visit user_path(@user2)
-        within('#viewing_parties') do
-          expect(page).to have_content('Top Gun: Maverick')
-          expect(page).to have_content('July 20, 1999 12:00 AM')
-          within('#role_invited') do
-            expect(page).to_not have_content('Host')
-            expect(page).to have_content('Invited')
+        
+        click_on 'Logout Here'
+        click_on "Login Here"
+        fill_in :email, with: @user2.email
+        fill_in :password, with: @user2.password
+        click_on "Login"
+        visit dashboard_path
+          within('#viewing_parties') do
+            expect(page).to have_content('Top Gun: Maverick')
+            expect(page).to have_content('July 20, 1999 12:00 AM')
+            within('#role_invited') do
+              expect(page).to_not have_content('Host')
+              expect(page).to have_content('Invited')
           end
         end
       end
