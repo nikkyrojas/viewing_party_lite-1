@@ -3,7 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe 'User | Logout' do
-  let!(:user) { User.create!(name: 'dominic', email: 'dominicod@gmail.com', password: 'password_1', password_confirmation: 'password_1') }
+  let!(:user) do
+    User.create!(name: 'dominic', email: 'dominicod@gmail.com', password: 'password_1',
+                 password_confirmation: 'password_1')
+  end
   let!(:stub_user) { allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user) }
 
   describe 'When I am a logged in user,' do

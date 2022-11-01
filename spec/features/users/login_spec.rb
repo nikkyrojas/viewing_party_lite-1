@@ -3,7 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe 'User | Login' do
-  let!(:user) { User.create!(name: 'dominic', email: 'dominicod@gmail.com', password: 'password_1', password_confirmation: 'password_1') }
+  let!(:user) do
+    User.create!(name: 'dominic', email: 'dominicod@gmail.com', password: 'password_1',
+                 password_confirmation: 'password_1')
+  end
 
   describe 'When I visit /login;'
   it 'I see a form to login' do

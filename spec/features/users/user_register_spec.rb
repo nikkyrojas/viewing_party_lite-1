@@ -25,7 +25,7 @@ RSpec.describe 'User | Register/New' do
 
       test = User.last
 
-      expect(current_path).to eq("/dashboard")
+      expect(current_path).to eq('/dashboard')
       expect(test.email).to eq('katyperry@email.com')
     end
   end
@@ -33,7 +33,8 @@ RSpec.describe 'User | Register/New' do
     it 'should not register the user if the email address is already in use' do
       visit register_path
 
-      User.create(name: 'Michael Jackson', email: 'michaeljackson@email.com', password: 'password_1', password_confirmation: 'password_1')
+      User.create(name: 'Michael Jackson', email: 'michaeljackson@email.com', password: 'password_1',
+                  password_confirmation: 'password_1')
       fill_in :name, with: 'micheal impersonator'
       fill_in :email, with: 'michaeljackson@email.com'
       fill_in :password, with: 'password_1'

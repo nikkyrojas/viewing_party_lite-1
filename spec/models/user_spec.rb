@@ -17,7 +17,8 @@ RSpec.describe User, type: :model do
 
   describe 'Password' do
     it 'ensures password is not stored as plain-text' do
-      user = User.create(name: 'Dominic', email: 'dominic@test.com', password: 'password123', password_confirmation: 'password123')
+      user = User.create(name: 'Dominic', email: 'dominic@test.com', password: 'password123',
+                         password_confirmation: 'password123')
 
       expect(user).to_not have_attribute(:password)
       expect(user.password_digest).to_not eq('password123')
@@ -27,9 +28,12 @@ RSpec.describe User, type: :model do
   describe 'Class Methods' do
     describe '.other_users' do
       it 'returns all other users given the argument of user obj' do
-        user1 = User.create!(name: 'jojo binks', email: 'jojo_binks@gmail.com', password: 'password_1', password_confirmation: 'password_1')
-        user2 = User.create!(name: 'bobby', email: 'bobby@yahoo.com', password: 'password_2', password_confirmation: 'password_2')
-        user3 = User.create!(name: 'marissa nicole', email: 'marissa.nicole99@gmail.com', password: 'password_3', password_confirmation: 'password_3')
+        user1 = User.create!(name: 'jojo binks', email: 'jojo_binks@gmail.com', password: 'password_1',
+                             password_confirmation: 'password_1')
+        user2 = User.create!(name: 'bobby', email: 'bobby@yahoo.com', password: 'password_2',
+                             password_confirmation: 'password_2')
+        user3 = User.create!(name: 'marissa nicole', email: 'marissa.nicole99@gmail.com', password: 'password_3',
+                             password_confirmation: 'password_3')
         expect(User.other_users(user1)).to eq [user2, user3]
       end
     end

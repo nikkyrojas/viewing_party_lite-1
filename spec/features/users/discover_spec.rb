@@ -5,7 +5,8 @@ require 'rails_helper'
 RSpec.describe 'User | Discover', type: :feature do
   describe 'When I visit /dashboard/discover;', :vcr do
     before(:each) do
-      @user1 = User.create!(name: 'Micheal Jordan', email: 'user235@gmail.com', password: 'password_1', password_confirmation: 'password_1')
+      @user1 = User.create!(name: 'Micheal Jordan', email: 'user235@gmail.com', password: 'password_1',
+                            password_confirmation: 'password_1')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
 
       visit user_discover_index_path
